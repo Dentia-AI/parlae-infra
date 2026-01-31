@@ -1,0 +1,88 @@
+===================================================================
+AWS Resource Audit - Dentia/Parlae Infrastructure
+===================================================================
+Date: Thu Jan 29 21:00:31 EST 2026
+AWS Profile: default
+
+🔍 Verifying AWS credentials...
+✅ AWS credentials verified
+Account: 931377561702
+User/Role: arn:aws:iam::931377561702:user/shaun-iam
+
+🪣 S3 Buckets (Global):
+  None matching dentia/parlae
+
+===========================================
+Region: us-east-2
+===========================================
+
+📦 ECS Clusters:
+  None matching dentia/parlae
+
+⚖️  Load Balancers:
+  None matching dentia/parlae
+
+🗄️  RDS/Aurora Clusters:
+  None matching dentia/parlae
+
+🎯 ECS Services:
+
+🐳 ECR Repositories:
+  None matching dentia/parlae
+
+🔐 ACM Certificates:
+  None matching dentia/parlae
+
+📊 CloudWatch Log Groups:
+
+👥 IAM Roles (checking for dentia/parlae prefix):
+
+
+===========================================
+Region: us-east-1
+===========================================
+
+📦 ECS Clusters:
+  None found
+
+⚖️  Load Balancers:
+  None matching dentia/parlae
+
+🗄️  RDS/Aurora Clusters:
+  None matching dentia/parlae
+
+🎯 ECS Services:
+  No ECS clusters found
+
+🐳 ECR Repositories:
+  None matching dentia/parlae
+
+🔐 ACM Certificates:
+  None matching dentia/parlae
+
+📊 CloudWatch Log Groups:
+
+👥 IAM Roles (checking for dentia/parlae prefix):
+
+
+===================================================================
+Audit Complete
+===================================================================
+
+📝 Summary:
+  - Check for duplicate resources (both dentia and parlae)
+  - us-east-2 should have your main infrastructure
+  - us-east-1 should ONLY have CloudFront ACM certificate (if prod)
+
+💡 Next Steps:
+  1. If you see duplicate 'dentia' resources, plan migration or cleanup
+  2. Verify no unexpected resources in us-east-1
+  3. Consider cleaning up old resources to reduce costs
+
+💰 Cost Impact of Duplicates:
+  - ALB: ~$16-25/month each
+  - Aurora: ~$0.12/hour per ACU (can be hundreds/month)
+  - NAT Gateway: ~$32/month each
+
+📖 See AWS_RESOURCES_AUDIT.md for detailed information
+

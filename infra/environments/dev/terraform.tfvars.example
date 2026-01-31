@@ -1,0 +1,7 @@
+# Terraform Variables Example - Dev Environment
+# Copy this file to terraform.tfvars and fill in your actual values
+
+# Google OAuth Configuration
+# Get these from Google Cloud Console
+cognito_google_client_id     = "YOUR_GOOGLE_CLIENT_ID.apps.googleusercontent.com"
+cognito_google_client_secret = "GOCSPX-YOUR_GOOGLE_CLIENT_SECRET"
