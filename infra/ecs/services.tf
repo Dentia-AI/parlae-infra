@@ -59,7 +59,19 @@ resource "aws_ecs_task_definition" "frontend" {
         { name = "GHL_LOCATION_ID", valueFrom = "${local.ssm_prefix}/frontend/GHL_LOCATION_ID" },
         { name = "NEXT_PUBLIC_GHL_WIDGET_ID", valueFrom = "${local.ssm_prefix}/frontend/NEXT_PUBLIC_GHL_WIDGET_ID" },
         { name = "NEXT_PUBLIC_GHL_LOCATION_ID", valueFrom = "${local.ssm_prefix}/frontend/NEXT_PUBLIC_GHL_LOCATION_ID" },
-        { name = "NEXT_PUBLIC_GHL_CALENDAR_ID", valueFrom = "${local.ssm_prefix}/frontend/NEXT_PUBLIC_GHL_CALENDAR_ID" }
+        { name = "NEXT_PUBLIC_GHL_CALENDAR_ID", valueFrom = "${local.ssm_prefix}/frontend/NEXT_PUBLIC_GHL_CALENDAR_ID" },
+        # Vapi.ai
+        { name = "VAPI_API_KEY", valueFrom = "${local.ssm_prefix}/frontend/VAPI_API_KEY" },
+        { name = "NEXT_PUBLIC_VAPI_PUBLIC_KEY", valueFrom = "${local.ssm_prefix}/frontend/NEXT_PUBLIC_VAPI_PUBLIC_KEY" },
+        { name = "VAPI_SERVER_SECRET", valueFrom = "${local.ssm_prefix}/frontend/VAPI_SERVER_SECRET" },
+        # Text-to-Speech APIs
+        { name = "ELEVENLABS_API_KEY", valueFrom = "${local.ssm_prefix}/frontend/ELEVENLABS_API_KEY" },
+        { name = "OPENAI_API_KEY", valueFrom = "${local.ssm_prefix}/frontend/OPENAI_API_KEY" },
+        # Twilio
+        { name = "TWILIO_ACCOUNT_SID", valueFrom = "${local.ssm_prefix}/frontend/TWILIO_ACCOUNT_SID" },
+        { name = "TWILIO_AUTH_TOKEN", valueFrom = "${local.ssm_prefix}/frontend/TWILIO_AUTH_TOKEN" },
+        # Admin
+        { name = "ADMIN_USER_IDS", valueFrom = "${local.ssm_prefix}/frontend/ADMIN_USER_IDS" }
       ]
     }
   ])
