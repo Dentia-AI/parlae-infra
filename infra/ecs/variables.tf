@@ -188,3 +188,49 @@ variable "stripe_webhook_secret" {
   sensitive   = true
   default     = ""
 }
+
+# ==================================================================
+# Backend Service Secrets
+# ==================================================================
+
+variable "sikka_app_id" {
+  description = "Sikka system-level App ID (shared across all practices)"
+  type        = string
+  sensitive   = true
+}
+
+variable "sikka_app_key" {
+  description = "Sikka system-level App Key (shared across all practices)"
+  type        = string
+  sensitive   = true
+}
+
+variable "vapi_api_key" {
+  description = "Vapi API key for backend"
+  type        = string
+  sensitive   = true
+}
+
+variable "vapi_webhook_secret" {
+  description = "Vapi webhook signature verification secret"
+  type        = string
+  sensitive   = true
+}
+
+variable "twilio_account_sid" {
+  description = "Twilio Account SID"
+  type        = string
+  sensitive   = true
+}
+
+variable "twilio_auth_token" {
+  description = "Twilio Auth Token"
+  type        = string
+  sensitive   = true
+}
+
+variable "twilio_messaging_service_sid" {
+  description = "Twilio Messaging Service SID"
+  type        = string
+  default     = ""
+}

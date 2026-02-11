@@ -5,3 +5,20 @@
 # Get these from Google Cloud Console
 cognito_google_client_id     = "YOUR_GOOGLE_CLIENT_ID.apps.googleusercontent.com"
 cognito_google_client_secret = "GOCSPX-YOUR_GOOGLE_CLIENT_SECRET"
+
+# ==================================================================
+# Backend Service Secrets (Add to terraform.tfvars - DO NOT COMMIT)
+# ==================================================================
+
+# Sikka PMS Integration (System-level, shared)
+sikka_app_id           = "your_sikka_app_id_here"
+sikka_app_key          = "your_sikka_app_key_here"
+
+# Vapi AI Voice Agent
+vapi_api_key           = "your_vapi_api_key_here"
+vapi_webhook_secret    = "your_vapi_webhook_secret_here"
+
+# Twilio Voice/SMS
+twilio_account_sid     = "your_twilio_account_sid_here"
+twilio_auth_token      = "your_twilio_auth_token_here"
+twilio_messaging_service_sid = "your_twilio_messaging_sid_here"

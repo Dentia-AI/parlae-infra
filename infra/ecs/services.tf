@@ -112,7 +112,19 @@ resource "aws_ecs_task_definition" "backend" {
         { name = "COGNITO_CLIENT_ID", valueFrom = "${local.ssm_prefix}/shared/COGNITO_CLIENT_ID" },
         { name = "COGNITO_ISSUER", valueFrom = "${local.ssm_prefix}/shared/COGNITO_ISSUER" },
         { name = "STRIPE_SECRET_KEY", valueFrom = "${local.ssm_prefix}/shared/STRIPE_SECRET_KEY" },
-        { name = "STRIPE_WEBHOOK_SECRET", valueFrom = "${local.ssm_prefix}/shared/STRIPE_WEBHOOK_SECRET" }
+        { name = "STRIPE_WEBHOOK_SECRET", valueFrom = "${local.ssm_prefix}/shared/STRIPE_WEBHOOK_SECRET" },
+        # Sikka System-Level Credentials (Shared)
+        { name = "SIKKA_APP_ID", valueFrom = "${local.ssm_prefix}/backend/SIKKA_APP_ID" },
+        { name = "SIKKA_APP_KEY", valueFrom = "${local.ssm_prefix}/backend/SIKKA_APP_KEY" },
+        # Vapi Configuration
+        { name = "VAPI_API_KEY", valueFrom = "${local.ssm_prefix}/backend/VAPI_API_KEY" },
+        { name = "VAPI_WEBHOOK_SECRET", valueFrom = "${local.ssm_prefix}/backend/VAPI_WEBHOOK_SECRET" },
+        # Twilio Configuration
+        { name = "TWILIO_ACCOUNT_SID", valueFrom = "${local.ssm_prefix}/backend/TWILIO_ACCOUNT_SID" },
+        { name = "TWILIO_AUTH_TOKEN", valueFrom = "${local.ssm_prefix}/backend/TWILIO_AUTH_TOKEN" },
+        { name = "TWILIO_MESSAGING_SERVICE_SID", valueFrom = "${local.ssm_prefix}/backend/TWILIO_MESSAGING_SERVICE_SID" },
+        # Application Configuration
+        { name = "APP_BASE_URL", valueFrom = "${local.ssm_prefix}/backend/APP_BASE_URL" }
       ]
     }
   ])
