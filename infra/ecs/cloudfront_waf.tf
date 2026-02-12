@@ -21,7 +21,7 @@ locals {
 resource "aws_acm_certificate" "cf" {
   count             = local.is_prod ? 1 : 0
   provider          = aws.use1         # us-east-1 provider alias
-  domain_name       = var.alb_hostname # e.g., app.dentiaapp.com
+  domain_name       = var.alb_hostname # e.g., app.parlae.ca
   validation_method = "DNS"
   subject_alternative_names = distinct(compact(concat(
     [var.domain],
@@ -318,7 +318,7 @@ resource "aws_cloudfront_distribution" "app" {
 # DNS                                   
 #########################################
 
-# PROD: app.dentiaapp.com -> CloudFront
+# PROD: app.parlae.ca -> CloudFront
 resource "aws_route53_record" "app_alias_to_cf" {
   count           = local.is_prod ? 1 : 0
   zone_id         = data.aws_route53_zone.domains[lookup(local.host_zone_map, var.alb_hostname, var.domain)].zone_id
@@ -362,7 +362,7 @@ resource "aws_route53_record" "apex_alias_to_cf" {
   }
 }
 
-# DEV: dev.dentiaapp.com -> ALB directly (cheap & simple)
+# DEV: dev.parlae.ca -> ALB directly (cheap & simple)
 resource "aws_route53_record" "dev_cname_to_alb" {
   count   = local.is_dev && var.alb_hostname != local.dev_hostname ? 1 : 0
   zone_id = data.aws_route53_zone.domains[var.domain].zone_id

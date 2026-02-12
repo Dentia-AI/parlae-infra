@@ -7,7 +7,7 @@ set -e
 
 PROFILE="dentia"
 REGION="us-east-2"
-BACKEND_URL="https://api.dentiaapp.com"
+BACKEND_URL="https://api.parlae.ca"
 
 echo "🚀 Deploying Backend URL Fix"
 echo "=============================="
@@ -16,7 +16,7 @@ echo ""
 # Step 1: Add SSM Parameter
 echo "📝 Step 1: Adding BACKEND_API_URL to SSM Parameter Store"
 aws ssm put-parameter \
-  --name "/dentia/frontend/BACKEND_API_URL" \
+  --name "/parlae/frontend/BACKEND_API_URL" \
   --value "$BACKEND_URL" \
   --type "String" \
   --overwrite \
@@ -84,8 +84,8 @@ echo ""
 
 # Step 6: Verify
 echo "🧪 Step 6: Testing backend connectivity"
-echo "   Testing: https://api.dentiaapp.com/health"
-HEALTH_STATUS=$(curl -s -o /dev/null -w "%{http_code}" https://api.dentiaapp.com/health)
+echo "   Testing: https://api.parlae.ca/health"
+HEALTH_STATUS=$(curl -s -o /dev/null -w "%{http_code}" https://api.parlae.ca/health)
 
 if [ "$HEALTH_STATUS" == "200" ]; then
   echo "✅ Backend health check passed (HTTP $HEALTH_STATUS)"
@@ -97,8 +97,8 @@ echo ""
 echo "✅ Deployment Complete!"
 echo ""
 echo "Next Steps:"
-echo "1. Log in to https://app.dentiaapp.com"
-echo "2. Navigate to https://app.dentiaapp.com/home/test-api"
+echo "1. Log in to https://app.parlae.ca"
+echo "2. Navigate to https://app.parlae.ca/home/test-api"
 echo "3. Verify all backend tests pass"
 echo ""
 echo "To view logs:"

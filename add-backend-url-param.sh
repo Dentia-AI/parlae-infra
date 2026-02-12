@@ -7,12 +7,12 @@ set -e
 
 PROFILE="dentia"
 REGION="us-east-2"
-BACKEND_URL="https://api.dentiaapp.com"
+BACKEND_URL="https://api.parlae.ca"
 
 echo "Adding BACKEND_API_URL to SSM Parameter Store..."
 
 aws ssm put-parameter \
-  --name "/dentia/frontend/BACKEND_API_URL" \
+  --name "/parlae/frontend/BACKEND_API_URL" \
   --value "$BACKEND_URL" \
   --type "String" \
   --overwrite \

@@ -13,7 +13,7 @@ variable "region" {
 variable "domain" {
   description = "Root Route53 domain."
   type        = string
-  default     = "dentiaapp.com"
+  default     = "parlae.ca"
 }
 
 variable "cognito_google_client_id" {

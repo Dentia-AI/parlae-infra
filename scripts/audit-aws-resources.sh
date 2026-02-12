@@ -77,7 +77,7 @@ audit_region() {
     
     echo ""
     echo "🔐 ACM Certificates:"
-    aws acm list-certificates --region $region --query 'CertificateSummaryList[].[DomainName,Status]' --output table 2>/dev/null | grep -E "dentia|parlae|Domain|dentiaapp" || echo "  None matching dentia/parlae"
+    aws acm list-certificates --region $region --query 'CertificateSummaryList[].[DomainName,Status]' --output table 2>/dev/null | grep -E "dentia|parlae|Domain|parlae.ca" || echo "  None matching dentia/parlae"
     
     echo ""
     echo "📊 CloudWatch Log Groups:"

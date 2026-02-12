@@ -104,7 +104,7 @@ Uploads all dev environment secrets to AWS SSM Parameter Store **WITHOUT** requi
 ```
 
 **Environment Variable Overrides:**
-- `DEV_HOSTNAME`: Override dev hostname (default: `dev.dentiaapp.com`)
+- `DEV_HOSTNAME`: Override dev hostname (default: `dev.parlae.ca`)
 - `DEV_NEXTAUTH_SECRET`: Override the generated NextAuth secret
 - `DEV_DISCOURSE_SSO_SECRET`: Override the generated Discourse SSO secret
 - `DEV_S3_BUCKET`: Override S3 bucket name
