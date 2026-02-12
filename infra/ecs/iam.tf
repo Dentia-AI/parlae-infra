@@ -1,3 +1,6 @@
+# Get current AWS account ID
+data "aws_caller_identity" "current" {}
+
 # Execution role (pulls from ECR, writes logs, reads secrets)
 resource "aws_iam_role" "ecs_task_execution" {
   name               = "${local.project_id}-ecsTaskExecutionRole"

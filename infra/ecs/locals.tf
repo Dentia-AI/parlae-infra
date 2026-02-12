@@ -8,6 +8,7 @@ locals {
     Project     = var.project_name
     Environment = var.environment
   }
+  tags = local.tags_common  # Alias for backwards compatibility
   ssm_prefix        = var.environment == "prod" ? "/${var.project_name}" : "/${var.project_name}/${var.environment}"
   protect_resources = var.protect_prod && local.is_prod
   dev_hostname      = "dev.${var.domain}"
