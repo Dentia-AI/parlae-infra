@@ -60,6 +60,9 @@ resource "aws_ecs_task_definition" "frontend" {
         { name = "NEXT_PUBLIC_GHL_WIDGET_ID", valueFrom = "${local.ssm_prefix}/frontend/NEXT_PUBLIC_GHL_WIDGET_ID" },
         { name = "NEXT_PUBLIC_GHL_LOCATION_ID", valueFrom = "${local.ssm_prefix}/frontend/NEXT_PUBLIC_GHL_LOCATION_ID" },
         { name = "NEXT_PUBLIC_GHL_CALENDAR_ID", valueFrom = "${local.ssm_prefix}/frontend/NEXT_PUBLIC_GHL_CALENDAR_ID" },
+        # Google Calendar
+        { name = "GOOGLE_CLIENT_ID", valueFrom = "${local.ssm_prefix}/frontend/GOOGLE_CLIENT_ID" },
+        { name = "GOOGLE_CLIENT_SECRET", valueFrom = "${local.ssm_prefix}/frontend/GOOGLE_CLIENT_SECRET" },
         # Vapi.ai
         { name = "VAPI_API_KEY", valueFrom = "${local.ssm_prefix}/frontend/VAPI_API_KEY" },
         { name = "NEXT_PUBLIC_VAPI_PUBLIC_KEY", valueFrom = "${local.ssm_prefix}/frontend/NEXT_PUBLIC_VAPI_PUBLIC_KEY" },
