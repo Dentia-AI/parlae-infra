@@ -50,22 +50,6 @@ locals {
   }
 }
 
-resource "aws_lb_listener_rule" "frontend_root" {
-  for_each     = local.frontend_host_chunks
-  listener_arn = aws_lb_listener.https.arn
-  priority     = 10 + tonumber(each.key)
-  action {
-    type             = "forward"
-    target_group_arn = aws_lb_target_group.frontend.arn
-  }
-  condition {
-    host_header { values = each.value }
-  }
-  condition {
-    path_pattern { values = ["/*"] }
-  }
-}
-
 resource "aws_lb_listener_rule" "backend_host" {
   count        = length(local.backend_hostnames) > 0 ? 1 : 0
   listener_arn = aws_lb_listener.https.arn
@@ -79,14 +63,32 @@ resource "aws_lb_listener_rule" "backend_host" {
   }
 }
 
+# Backend API routes - MUST come before frontend catch-all
 resource "aws_lb_listener_rule" "backend_api" {
   listener_arn = aws_lb_listener.https.arn
-  priority     = 20
+  priority     = 8
   action {
     type             = "forward"
     target_group_arn = aws_lb_target_group.backend.arn
   }
   condition {
     path_pattern { values = ["/api/*"] }
+  }
+}
+
+# Frontend routes - catch all remaining traffic
+resource "aws_lb_listener_rule" "frontend_root" {
+  for_each     = local.frontend_host_chunks
+  listener_arn = aws_lb_listener.https.arn
+  priority     = 10 + tonumber(each.key)
+  action {
+    type             = "forward"
+    target_group_arn = aws_lb_target_group.frontend.arn
+  }
+  condition {
+    host_header { values = each.value }
+  }
+  condition {
+    path_pattern { values = ["/*"] }
   }
 }
