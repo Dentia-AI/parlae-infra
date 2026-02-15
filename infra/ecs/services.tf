@@ -126,6 +126,16 @@ resource "aws_ecs_task_definition" "backend" {
         { name = "TWILIO_ACCOUNT_SID", valueFrom = "${local.ssm_prefix}/backend/TWILIO_ACCOUNT_SID" },
         { name = "TWILIO_AUTH_TOKEN", valueFrom = "${local.ssm_prefix}/backend/TWILIO_AUTH_TOKEN" },
         { name = "TWILIO_MESSAGING_SERVICE_SID", valueFrom = "${local.ssm_prefix}/backend/TWILIO_MESSAGING_SERVICE_SID" },
+        # AWS SES Email Configuration
+        { name = "AWS_ACCESS_KEY_ID", valueFrom = "${local.ssm_prefix}/backend/AWS_ACCESS_KEY_ID" },
+        { name = "AWS_SECRET_ACCESS_KEY", valueFrom = "${local.ssm_prefix}/backend/AWS_SECRET_ACCESS_KEY" },
+        { name = "EMAIL_FROM", valueFrom = "${local.ssm_prefix}/backend/EMAIL_FROM" },
+        { name = "EMAIL_FROM_NAME", valueFrom = "${local.ssm_prefix}/backend/EMAIL_FROM_NAME" },
+        { name = "MAILER_PROVIDER", valueFrom = "${local.ssm_prefix}/backend/MAILER_PROVIDER" },
+        # Google Calendar Configuration
+        { name = "GOOGLE_CLIENT_ID", valueFrom = "${local.ssm_prefix}/backend/GOOGLE_CLIENT_ID" },
+        { name = "GOOGLE_CLIENT_SECRET", valueFrom = "${local.ssm_prefix}/backend/GOOGLE_CLIENT_SECRET" },
+        { name = "GOOGLE_REDIRECT_URI", valueFrom = "${local.ssm_prefix}/backend/GOOGLE_REDIRECT_URI" },
         # Application Configuration
         { name = "APP_BASE_URL", valueFrom = "${local.ssm_prefix}/backend/APP_BASE_URL" }
       ]
