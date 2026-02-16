@@ -74,7 +74,10 @@ resource "aws_ecs_task_definition" "frontend" {
         { name = "TWILIO_ACCOUNT_SID", valueFrom = "${local.ssm_prefix}/frontend/TWILIO_ACCOUNT_SID" },
         { name = "TWILIO_AUTH_TOKEN", valueFrom = "${local.ssm_prefix}/frontend/TWILIO_AUTH_TOKEN" },
         # Admin
-        { name = "ADMIN_USER_IDS", valueFrom = "${local.ssm_prefix}/frontend/ADMIN_USER_IDS" }
+        { name = "ADMIN_USER_IDS", valueFrom = "${local.ssm_prefix}/frontend/ADMIN_USER_IDS" },
+        # Sikka PMS (needed for frontend API routes)
+        { name = "SIKKA_APP_ID", valueFrom = "${local.ssm_prefix}/frontend/SIKKA_APP_ID" },
+        { name = "SIKKA_APP_KEY", valueFrom = "${local.ssm_prefix}/frontend/SIKKA_APP_KEY" }
       ]
     }
   ])
