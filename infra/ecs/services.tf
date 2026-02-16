@@ -67,6 +67,7 @@ resource "aws_ecs_task_definition" "frontend" {
         { name = "VAPI_API_KEY", valueFrom = "${local.ssm_prefix}/frontend/VAPI_API_KEY" },
         { name = "NEXT_PUBLIC_VAPI_PUBLIC_KEY", valueFrom = "${local.ssm_prefix}/frontend/NEXT_PUBLIC_VAPI_PUBLIC_KEY" },
         { name = "VAPI_SERVER_SECRET", valueFrom = "${local.ssm_prefix}/frontend/VAPI_SERVER_SECRET" },
+        { name = "VAPI_WEBHOOK_SECRET", valueFrom = "${local.ssm_prefix}/backend/VAPI_WEBHOOK_SECRET" },
         # Text-to-Speech APIs
         { name = "ELEVENLABS_API_KEY", valueFrom = "${local.ssm_prefix}/frontend/ELEVENLABS_API_KEY" },
         { name = "OPENAI_API_KEY", valueFrom = "${local.ssm_prefix}/frontend/OPENAI_API_KEY" },
