@@ -4,7 +4,7 @@ set -euo pipefail
 # Script to establish port forwarding tunnel to Aurora database via bastion
 # Usage: ./connect-to-database.sh [aws-profile] [local-port]
 
-PROFILE=${1:-dentia}
+PROFILE=${1:-parlae}
 LOCAL_PORT=${2:-15432}
 REGION="us-east-2"
 
@@ -12,7 +12,7 @@ echo "🔍 Finding bastion instance..."
 
 # Find the bastion instance ID
 INSTANCE_ID=$(aws ec2 describe-instances \
-  --filters "Name=tag:Name,Values=dentia-bastion" \
+  --filters "Name=tag:Name,Values=parlae-bastion" \
             "Name=instance-state-name,Values=running" \
   --query "Reservations[0].Instances[0].InstanceId" \
   --output text \
@@ -35,7 +35,7 @@ fi
 echo "✅ Found bastion: $INSTANCE_ID"
 
 # Get the database endpoint from SSM or use default
-DB_HOST=${DB_HOST:-dentia-aurora-cluster.cluster-c9kuy2skoi93.us-east-2.rds.amazonaws.com}
+DB_HOST=${DB_HOST:-parlae-aurora-cluster.cluster-cpe42k4icbjd.us-east-2.rds.amazonaws.com}
 DB_PORT=5432
 
 echo "🚀 Starting SSM port forwarding session..."
