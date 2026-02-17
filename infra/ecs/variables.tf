@@ -114,6 +114,24 @@ variable "protect_prod" {
   default     = true
 }
 
+variable "aurora_db_name" {
+  description = "Aurora database name."
+  type        = string
+  default     = "dentia"
+}
+
+variable "aurora_master_username" {
+  description = "Aurora master username."
+  type        = string
+  default     = "dentia_admin"
+}
+
+variable "aurora_master_password" {
+  description = "Aurora master password. Sensitive — do not commit to VCS."
+  type        = string
+  sensitive   = true
+}
+
 variable "aurora_min_capacity" {
   type        = number
   description = "Minimum Aurora Serverless v2 capacity in ACUs (0.5 increments)."
@@ -163,10 +181,28 @@ variable "backend_max_tasks" {
   default     = 8
 }
 
-variable "alb_request_count_target" {
-  description = "Target number of requests per target for ALB-based auto-scaling."
+variable "frontend_alb_request_count_target" {
+  description = "Target number of requests per target for frontend ALB-based auto-scaling (per 1-min period)."
   type        = number
   default     = 1000
+}
+
+variable "backend_alb_request_count_target" {
+  description = "Target number of requests per target for backend ALB-based auto-scaling (per 1-min period)."
+  type        = number
+  default     = 1000
+}
+
+variable "frontend_db_connection_limit" {
+  description = "Prisma connection pool size per frontend ECS task. Total connections = this * frontend_max_tasks."
+  type        = number
+  default     = 10
+}
+
+variable "backend_db_connection_limit" {
+  description = "Prisma connection pool size per backend ECS task. Total connections = this * backend_max_tasks."
+  type        = number
+  default     = 20
 }
 
 # Stripe Configuration

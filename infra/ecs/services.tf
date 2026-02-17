@@ -259,7 +259,7 @@ resource "aws_appautoscaling_policy" "frontend_alb_requests" {
   service_namespace  = aws_appautoscaling_target.frontend.service_namespace
 
   target_tracking_scaling_policy_configuration {
-    target_value       = var.alb_request_count_target
+    target_value       = var.frontend_alb_request_count_target
     scale_in_cooldown  = 300
     scale_out_cooldown = 30
     predefined_metric_specification {
@@ -321,7 +321,7 @@ resource "aws_appautoscaling_policy" "backend_alb_requests" {
   service_namespace  = aws_appautoscaling_target.backend.service_namespace
 
   target_tracking_scaling_policy_configuration {
-    target_value       = var.alb_request_count_target
+    target_value       = var.backend_alb_request_count_target
     scale_in_cooldown  = 300
     scale_out_cooldown = 30
     predefined_metric_specification {

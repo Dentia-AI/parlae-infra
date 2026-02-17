@@ -123,6 +123,10 @@ resource "aws_cognito_user_pool_client" "frontend" {
     id_token      = "minutes"
     refresh_token = "days"
   }
+
+  lifecycle {
+    ignore_changes = [generate_secret]
+  }
 }
 
 resource "aws_cognito_identity_provider" "google" {

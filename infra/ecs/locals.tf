@@ -11,6 +11,11 @@ locals {
   tags = local.tags_common  # Alias for backwards compatibility
   ssm_prefix        = var.environment == "prod" ? "/${var.project_name}" : "/${var.project_name}/${var.environment}"
   protect_resources = var.protect_prod && local.is_prod
+
+  # Database URL construction with connection pool limits
+  db_base_url           = "postgresql://${var.aurora_master_username}:${urlencode(var.aurora_master_password)}@${aws_rds_cluster.aurora.endpoint}:5432/${var.aurora_db_name}?schema=public"
+  frontend_database_url = "${local.db_base_url}&connection_limit=${var.frontend_db_connection_limit}"
+  backend_database_url  = "${local.db_base_url}&connection_limit=${var.backend_db_connection_limit}"
   dev_hostname      = "dev.${var.domain}"
 
   base_domains = distinct(compact(concat([var.domain], var.additional_domains)))

@@ -16,9 +16,9 @@ resource "aws_rds_cluster" "aurora" {
   engine_version     = "15.12"
   engine_mode        = "provisioned"
 
-  database_name             = "dentia"
-  master_username           = "dentia_admin"
-  master_password           = "S7#tY4^zN9_Rq2+xS8!nV9d"
+  database_name             = var.aurora_db_name
+  master_username           = var.aurora_master_username
+  master_password           = var.aurora_master_password
   db_subnet_group_name      = aws_db_subnet_group.aurora.name
   vpc_security_group_ids    = [aws_security_group.db.id]
   backup_retention_period   = 3
@@ -34,6 +34,10 @@ resource "aws_rds_cluster" "aurora" {
   tags = merge(local.tags_common, { Name = "${local.project_id}-aurora-cluster" })
 
   deletion_protection = local.protect_resources
+
+  lifecycle {
+    ignore_changes = [master_password]
+  }
 }
 
 # Instance (required for v2)
