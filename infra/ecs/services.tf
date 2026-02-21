@@ -34,6 +34,8 @@ resource "aws_ecs_task_definition" "frontend" {
         },
         { name = "TRUST_PROXY", value = "1" },
         { name = "COOKIE_DOMAIN", value = ".${var.domain}" },
+        # Analytics
+        { name = "NEXT_PUBLIC_CLARITY_PROJECT_ID", value = "vixfmgz5xg" },
         {
           name  = "DISCOURSE_SSO_ALLOWED_RETURN_URLS",
           value = join(",", [for host in local.hub_hosts : "https://${host}/session/sso_login"])
@@ -60,6 +62,8 @@ resource "aws_ecs_task_definition" "frontend" {
         { name = "NEXT_PUBLIC_GHL_WIDGET_ID", valueFrom = "${local.ssm_prefix}/frontend/NEXT_PUBLIC_GHL_WIDGET_ID" },
         { name = "NEXT_PUBLIC_GHL_LOCATION_ID", valueFrom = "${local.ssm_prefix}/frontend/NEXT_PUBLIC_GHL_LOCATION_ID" },
         { name = "NEXT_PUBLIC_GHL_CALENDAR_ID", valueFrom = "${local.ssm_prefix}/frontend/NEXT_PUBLIC_GHL_CALENDAR_ID" },
+        { name = "NEXT_PUBLIC_GHL_TRACKING_DOMAIN", valueFrom = "${local.ssm_prefix}/frontend/NEXT_PUBLIC_GHL_TRACKING_DOMAIN" },
+        { name = "NEXT_PUBLIC_GHL_TRACKING_ID", valueFrom = "${local.ssm_prefix}/frontend/NEXT_PUBLIC_GHL_TRACKING_ID" },
         # Google Calendar
         { name = "GOOGLE_CLIENT_ID", valueFrom = "${local.ssm_prefix}/frontend/GOOGLE_CLIENT_ID" },
         { name = "GOOGLE_CLIENT_SECRET", valueFrom = "${local.ssm_prefix}/frontend/GOOGLE_CLIENT_SECRET" },

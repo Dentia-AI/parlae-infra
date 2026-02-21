@@ -270,3 +270,59 @@ variable "twilio_messaging_service_sid" {
   type        = string
   default     = ""
 }
+
+# ==================================================================
+# AWS SES Email Configuration
+# ==================================================================
+
+variable "aws_ses_access_key_id" {
+  description = "AWS IAM Access Key ID for SES email sending"
+  type        = string
+  sensitive   = true
+}
+
+variable "aws_ses_secret_access_key" {
+  description = "AWS IAM Secret Access Key for SES email sending"
+  type        = string
+  sensitive   = true
+}
+
+variable "email_from" {
+  description = "Default sender email address (e.g. support@parlae.ca)"
+  type        = string
+  default     = "support@parlae.ca"
+}
+
+variable "email_from_name" {
+  description = "Default sender display name"
+  type        = string
+  default     = "Parlae AI"
+}
+
+variable "mailer_provider" {
+  description = "Email provider (aws-ses, smtp, etc.)"
+  type        = string
+  default     = "aws-ses"
+}
+
+# ==================================================================
+# Google Calendar Configuration
+# ==================================================================
+
+variable "google_calendar_client_id" {
+  description = "Google OAuth Client ID for Calendar API"
+  type        = string
+  sensitive   = true
+}
+
+variable "google_calendar_client_secret" {
+  description = "Google OAuth Client Secret for Calendar API"
+  type        = string
+  sensitive   = true
+}
+
+variable "google_calendar_redirect_uri" {
+  description = "Google OAuth redirect URI for Calendar callback"
+  type        = string
+  default     = ""
+}
