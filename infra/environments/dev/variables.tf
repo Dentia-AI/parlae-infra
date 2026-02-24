@@ -79,6 +79,20 @@ variable "vapi_webhook_secret" {
   sensitive   = true
 }
 
+variable "retell_api_key" {
+  description = "Retell AI API key for backup voice provider."
+  type        = string
+  sensitive   = true
+  default     = ""
+}
+
+variable "retell_webhook_secret" {
+  description = "Retell AI webhook signature secret."
+  type        = string
+  sensitive   = true
+  default     = ""
+}
+
 variable "twilio_account_sid" {
   description = "Twilio Account SID."
   type        = string

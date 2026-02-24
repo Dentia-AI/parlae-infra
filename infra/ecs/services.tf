@@ -72,6 +72,9 @@ resource "aws_ecs_task_definition" "frontend" {
         { name = "NEXT_PUBLIC_VAPI_PUBLIC_KEY", valueFrom = "${local.ssm_prefix}/frontend/NEXT_PUBLIC_VAPI_PUBLIC_KEY" },
         { name = "VAPI_SERVER_SECRET", valueFrom = "${local.ssm_prefix}/frontend/VAPI_SERVER_SECRET" },
         { name = "VAPI_WEBHOOK_SECRET", valueFrom = "${local.ssm_prefix}/backend/VAPI_WEBHOOK_SECRET" },
+        # Retell AI
+        { name = "RETELL_API_KEY", valueFrom = "${local.ssm_prefix}/backend/RETELL_API_KEY" },
+        { name = "RETELL_WEBHOOK_SECRET", valueFrom = "${local.ssm_prefix}/backend/RETELL_WEBHOOK_SECRET" },
         # Text-to-Speech APIs
         { name = "ELEVENLABS_API_KEY", valueFrom = "${local.ssm_prefix}/frontend/ELEVENLABS_API_KEY" },
         { name = "OPENAI_API_KEY", valueFrom = "${local.ssm_prefix}/frontend/OPENAI_API_KEY" },
@@ -130,6 +133,9 @@ resource "aws_ecs_task_definition" "backend" {
         # Vapi Configuration
         { name = "VAPI_API_KEY", valueFrom = "${local.ssm_prefix}/backend/VAPI_API_KEY" },
         { name = "VAPI_WEBHOOK_SECRET", valueFrom = "${local.ssm_prefix}/backend/VAPI_WEBHOOK_SECRET" },
+        # Retell AI Configuration
+        { name = "RETELL_API_KEY", valueFrom = "${local.ssm_prefix}/backend/RETELL_API_KEY" },
+        { name = "RETELL_WEBHOOK_SECRET", valueFrom = "${local.ssm_prefix}/backend/RETELL_WEBHOOK_SECRET" },
         # Twilio Configuration
         { name = "TWILIO_ACCOUNT_SID", valueFrom = "${local.ssm_prefix}/backend/TWILIO_ACCOUNT_SID" },
         { name = "TWILIO_AUTH_TOKEN", valueFrom = "${local.ssm_prefix}/backend/TWILIO_AUTH_TOKEN" },

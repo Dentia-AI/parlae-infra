@@ -23,6 +23,10 @@ sikka_app_key = "your_sikka_app_key_here"
 vapi_api_key        = "your_vapi_api_key_here"
 vapi_webhook_secret = "your_vapi_webhook_secret_here"
 
+# Retell AI (backup voice provider)
+retell_api_key        = "your_retell_api_key_here"
+retell_webhook_secret = "your_retell_webhook_secret_here"
+
 # Twilio Voice/SMS
 twilio_account_sid          = "your_twilio_account_sid_here"
 twilio_auth_token           = "your_twilio_auth_token_here"
