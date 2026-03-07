@@ -140,9 +140,9 @@ resource "aws_ecs_task_definition" "backend" {
         { name = "TWILIO_ACCOUNT_SID", valueFrom = "${local.ssm_prefix}/backend/TWILIO_ACCOUNT_SID" },
         { name = "TWILIO_AUTH_TOKEN", valueFrom = "${local.ssm_prefix}/backend/TWILIO_AUTH_TOKEN" },
         { name = "TWILIO_MESSAGING_SERVICE_SID", valueFrom = "${local.ssm_prefix}/backend/TWILIO_MESSAGING_SERVICE_SID" },
-        # AWS SES Email Configuration
-        { name = "AWS_ACCESS_KEY_ID", valueFrom = "${local.ssm_prefix}/backend/AWS_ACCESS_KEY_ID" },
-        { name = "AWS_SECRET_ACCESS_KEY", valueFrom = "${local.ssm_prefix}/backend/AWS_SECRET_ACCESS_KEY" },
+        # AWS SES Email Configuration (SES-specific credentials to avoid overriding ECS task role)
+        { name = "SES_ACCESS_KEY_ID", valueFrom = "${local.ssm_prefix}/backend/AWS_ACCESS_KEY_ID" },
+        { name = "SES_SECRET_ACCESS_KEY", valueFrom = "${local.ssm_prefix}/backend/AWS_SECRET_ACCESS_KEY" },
         { name = "EMAIL_FROM", valueFrom = "${local.ssm_prefix}/backend/EMAIL_FROM" },
         { name = "EMAIL_FROM_NAME", valueFrom = "${local.ssm_prefix}/backend/EMAIL_FROM_NAME" },
         { name = "MAILER_PROVIDER", valueFrom = "${local.ssm_prefix}/backend/MAILER_PROVIDER" },
